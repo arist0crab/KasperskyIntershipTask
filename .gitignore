@@ -1,0 +1,7 @@
+[Bb]in/
+[Oo]bj/
+*.[Ll]og
+*.[Cc]ache
+
+.vs/
+.vscode/
