@@ -11,6 +11,14 @@ REST API сервис на .NET 10 для управления уязвимос�
 
 > 📖 **[Подробное описание](#-api-endpoints)**
 
+## ⚙️ Technology stack
+
+- **Platform:** .NET 10 (C#)
+- **Web Framework:** ASP.NET Core Web API
+- **Data Serialization:** `System.Text.Json`
+- **Testing:** xUnit, Moq, FluentAssertions
+- **Architecture:** In-memory Repository 
+
 ## 🚀 Quick start
 
 Запуск проекта локально через .NET CLI:
@@ -47,6 +55,12 @@ arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "htt
 {"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
 ```
 
+## 🌐 Interactive documentation (Swagger UI)
+
+При запуске приложения в режиме разработки (`Development`) вы можете использовать встроенный Swagger UI для тестирования эндпоинтов прямо из браузера:
+
+- `http://localhost:<port>/swagger`
+
 ## 📁 About project
 
 ### Project structure
@@ -71,7 +85,7 @@ KasperskyIntershipTask/
     └── VulnerabilityTrackerApi.Tests.csproj # Файл проекта тестов
 ```
 
-### Project UML-diagram
+### 🧩 Project UML-diagram
 
 ![pic](uml/VulnerabilityTrackerAPI.png)
 
