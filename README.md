@@ -47,6 +47,34 @@ arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "htt
 {"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
 ```
 
+## 📁 About project
+
+### Project structure
+
+```text
+KasperskyIntershipTask/
+│
+├── VulnerabilityTrackerApi/             # Основной REST API сервис
+│   ├── Controllers/                     # Контроллеры эндпоинтов
+│   ├── DTOs/                            # DTO-модели
+│   ├── Exceptions /                     # Исключения
+│   ├── Middlewares/                     # Логгирование
+│   ├── Models/                          # Модели данных
+│   ├── Repositories/                    # Интерфейсы и реализации хранилищ данных
+│   ├── Services/                        # Бизнес-логика
+│   ├── Program.cs                       # Конфигурация пайплайна
+│   └── VulnerabilityTrackerApi.csproj   # Файл проекта API
+│
+└── VulnerabilityTrackerApi.Tests/       # Модульные тесты
+    ├── Controllers/                     # Юнит-тесты контроллеров
+    ├── Services/                        # Юнит-тесты сервисов
+    └── VulnerabilityTrackerApi.Tests.csproj # Файл проекта тестов
+```
+
+### Project UML-diagram
+
+![pic](uml/VulnerabilityTrackerAPI.png)
+
 ## 📌 API Endpoints
 
 ### 📍 1. Управление уязвимостями (`/api/vulnerabilities`)
