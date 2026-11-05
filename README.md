@@ -34,12 +34,6 @@ dotnet run
 dotnet test
 ```
 
-4. Пример взаимодейтвия:
-
-```bash
-
-```
-
 ## 📌 API Endpoints
 
 ### 📍 1. Управление уязвимостями (`/api/vulnerabilities`)
