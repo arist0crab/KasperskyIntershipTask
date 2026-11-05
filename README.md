@@ -11,6 +11,14 @@ REST API сервис на .NET 10 для управления уязвимос�
 
 > 📖 **[Подробное описание](#-api-endpoints)**
 
+## ⚙️ Technology stack
+
+- **Platform:** .NET 10 (C#)
+- **Web Framework:** ASP.NET Core Web API
+- **Data Serialization:** `System.Text.Json`
+- **Testing:** xUnit, Moq, FluentAssertions
+- **Architecture:** In-memory Repository 
+
 ## 🚀 Quick start
 
 Запуск проекта локально через .NET CLI:
@@ -33,6 +41,53 @@ dotnet run
 ```bash
 dotnet test
 ```
+
+4. Пример использования:
+
+>[!IMPORTANT] 
+> Убедитесь, что порт в запросах совпадает с портом, назначенным ASP.NET при запуске приложения.
+
+```bash
+arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "http://localhost:5118/api/vulnerabilities" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "SQL Injection", "severity": "High"}'
+
+{"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
+```
+
+## 🌐 Interactive documentation (Swagger UI)
+
+При запуске приложения в режиме разработки (`Development`) вы можете использовать встроенный Swagger UI для тестирования эндпоинтов прямо из браузера:
+
+- `http://localhost:<port>/swagger`
+
+## 📁 About project
+
+### Project structure
+
+```text
+KasperskyIntershipTask/
+│
+├── VulnerabilityTrackerApi/             # Основной REST API сервис
+│   ├── Controllers/                     # Контроллеры эндпоинтов
+│   ├── DTOs/                            # DTO-модели
+│   ├── Exceptions /                     # Исключения
+│   ├── Middlewares/                     # Логгирование
+│   ├── Models/                          # Модели данных
+│   ├── Repositories/                    # Интерфейсы и реализации хранилищ данных
+│   ├── Services/                        # Бизнес-логика
+│   ├── Program.cs                       # Конфигурация пайплайна
+│   └── VulnerabilityTrackerApi.csproj   # Файл проекта API
+│
+└── VulnerabilityTrackerApi.Tests/       # Модульные тесты
+    ├── Controllers/                     # Юнит-тесты контроллеров
+    ├── Services/                        # Юнит-тесты сервисов
+    └── VulnerabilityTrackerApi.Tests.csproj # Файл проекта тестов
+```
+
+### 🧩 Project UML-diagram
+
+![pic](uml/VulnerabilityTrackerAPI.png)
 
 ## 📌 API Endpoints
 
