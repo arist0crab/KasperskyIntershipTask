@@ -34,6 +34,19 @@ dotnet run
 dotnet test
 ```
 
+4. Пример использования:
+
+>[!IMPORTANT] 
+> Убедитесь, что порт в запросах совпадает с портом, назначенным ASP.NET при запуске приложения.
+
+```bash
+arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "http://localhost:5118/api/vulnerabilities" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "SQL Injection", "severity": "High"}'
+
+{"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
+```
+
 ## 📌 API Endpoints
 
 ### 📍 1. Управление уязвимостями (`/api/vulnerabilities`)
