@@ -11,6 +11,35 @@ REST API сервис на .NET 10 для управления уязвимос�
 
 > 📖 **[Подробное описание](#-api-endpoints)**
 
+## 🚀 Quick start
+
+Запуск проекта локально через .NET CLI:
+
+1. Склонируйте репозиторий и перейдите в рабочую директорию:
+
+```bash
+git clone https://github.com/arist0crab/KasperskyIntershipTask
+cd VulnerabilityTrackerApi
+```
+
+2. Соберите и запустите приложение:
+
+```bash
+dotnet run
+```
+
+3. Для запуска тестов выполните:
+
+```bash
+dotnet test
+```
+
+4. Пример взаимодейтвия:
+
+```bash
+
+```
+
 ## 📌 API Endpoints
 
 ### 📍 1. Управление уязвимостями (`/api/vulnerabilities`)
