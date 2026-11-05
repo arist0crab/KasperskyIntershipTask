@@ -2,6 +2,15 @@
 
 REST API сервис на .NET 10 для управления уязвимостями ПО и эмуляции асинхронных задач сканирования репозиториев.
 
+## 📌 API Endpoints Quick Reference
+
+- **`POST /api/vulnerabilities`** — создание уязвимости
+- **`GET /api/vulnerabilities/{id}`** — получение уязвимости по ID
+- **`POST /api/scantasks`** — запуск сканирования репозитория
+- **`GET /api/scantasks/{id}`** — получение статуса задачи сканирования
+
+> 📖 **[Подробное описание](#-api-endpoints)**
+
 ## 📌 API Endpoints
 
 ### 📍 1. Управление уязвимостями (`/api/vulnerabilities`)
@@ -69,7 +78,7 @@ REST API сервис на .NET 10 для управления уязвимос�
 
     ```json
     {
-      "repository_url": "[https://github.com/example/repo](https://github.com/example/repo)"
+      "repository_url": "https://github.com/example/repo"
     }
     ```
 
