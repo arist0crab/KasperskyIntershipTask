@@ -9,13 +9,15 @@ REST API сервис на .NET 10 для управления уязвимос�
 - [x] Создан эндпоинт для запуска фоновой задачи по сканированию кода репозитория
 - [x] Создан эндпоинт для получения статуса и результата выполнения задачи сканирования
 - [x] Добавлена [возможность](#-configuration) настройки ограничения параллельного сканирования
+- [x] Создан эндпоинт для отмены сканирования
 
 ## 📌 API Endpoints Quick Reference
 
-- **`POST /api/vulnerabilities`** — создание уязвимости
-- **`GET /api/vulnerabilities/{id}`** — получение уязвимости по ID
-- **`POST /api/scantasks`** — запуск сканирования репозитория
-- **`GET /api/scantasks/{id}`** — получение статуса задачи сканирования
+- **`POST /api/vulnerabilities`** - создание уязвимости
+- **`GET /api/vulnerabilities/{id}`** - получение уязвимости по ID
+- **`POST /api/scantasks`** - запуск сканирования репозитория
+- **`GET /api/scantasks/{id}`** - получение статуса задачи сканирования
+- **`POST /api/scantasks/{id}/cancel`** - отмена задачи сканирования
 
 > 📖 **[Подробное описание](#-api-endpoints)**
 
@@ -28,6 +30,9 @@ REST API сервис на .NET 10 для управления уязвимос�
 - **Architecture:** In-memory Repository 
 
 ## 🚀 Quick start
+
+> [!IMPORTANT] 
+> Для запуска проекта убедитесь, что на вашем компьютере установлен .NET 10 SDK.
 
 Запуск проекта локально через .NET CLI:
 
@@ -58,7 +63,11 @@ dotnet test
 arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "http://localhost:5118/api/vulnerabilities" \
      -H "Content-Type: application/json" \
      -d '{"name": "SQL Injection", "severity": "High"}'
+```
 
+Ответ:
+
+```bash
 {"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
 ```
 
@@ -91,7 +100,7 @@ arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "htt
 
 ## 🌐 Interactive documentation (Swagger UI)
 
-При запуске приложения в режиме разработки (`Development`) вы можете использовать встроенный Swagger UI для тестирования эндпоинтов прямо из браузера:
+При запуске приложения в режиме разработки (`Development`) вы можете использовать встроенный Swagger UI для тестирования эндпоинтов из браузера:
 
 - `http://localhost:<port>/swagger`
 
@@ -214,6 +223,36 @@ KasperskyIntershipTask/
       "message": "An error occurred while saving scan task"
     }
     ```
+
+- **`POST /api/scantasks/{id}/cancel`** - отмена задачи сканирования (работает как для задач в очереди, так и для уже запущенных).
+
+  - 📥 **Request Body (`application/json`):**
+
+  ```json
+
+  ```
+
+  - ✅ **Успешный ответ (`200 OK`):**
+
+  Возвращает ID задачи сканирования на отмену, успех или неудачу отмены данной задачи в поле `success`, время попытки отмены.
+
+  ```json
+  {
+    "id": "7bc91e42-1234-5678-abcd-1234567890ab",
+    "success": true,
+    "cancelled_at": "2026-03-30T12:02:00Z"
+  }
+  ```
+
+  - ❌ **Ошибка (`404 Not Found`):** 
+
+  Задача сканирования с соответствующим ID не была найдена.
+
+  ```json
+  {
+    "message": "No scan task with such id"
+  }
+  ```
 
 - **`GET /api/scantasks/{id}`** - получение статуса выполнения задачи сканирования и результат сканирования в случае успешного завершения заадчи.
 
