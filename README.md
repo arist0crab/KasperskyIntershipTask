@@ -1,4 +1,4 @@
-# Vulnerability Tracker API
+# Vulnerability Tracker API Documentation
 
 REST API сервис на .NET 10 для управления уязвимостями ПО и эмуляции асинхронных задач сканирования репозиториев.
 
