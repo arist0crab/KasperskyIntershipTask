@@ -2,6 +2,14 @@
 
 REST API сервис на .NET 10 для управления уязвимостями ПО и эмуляции асинхронных задач сканирования репозиториев.
 
+## 🔥 Solved tasks
+
+- [x] Создан эндпоинт для добавления уязвимости
+- [x] Создан эндпоинт для получения информации об уязвимости по ID
+- [x] Создан эндпоинт для запуска фоновой задачи по сканированию кода репозитория
+- [x] Создан эндпоинт для получения статуса и результата выполнения задачи сканирования
+- [x] Добавлена [возможность](#-configuration) настройки ограничения параллельного сканирования
+
 ## 📌 API Endpoints Quick Reference
 
 - **`POST /api/vulnerabilities`** — создание уязвимости
@@ -27,16 +35,15 @@ REST API сервис на .NET 10 для управления уязвимос�
 
 ```bash
 git clone https://github.com/arist0crab/KasperskyIntershipTask
-cd VulnerabilityTrackerApi
 ```
 
-2. Соберите и запустите приложение:
+2. Соберите и запустите приложение (из директории `VulnerabilityTrackerApi`):
 
 ```bash
 dotnet run
 ```
 
-3. Для запуска тестов выполните:
+3. Для запуска тестов выполните (из директории `VulnerabilityTrackerApi.Tests`):
 
 ```bash
 dotnet test
@@ -54,6 +61,33 @@ arist0crab@arist0crab:~/VsCodeProjects/KasperskyIntershipTask$ curl -X POST "htt
 
 {"id":"d5b56918-4b6a-4c3d-a576-7ba66f484b0c"}
 ```
+
+## 🔧 Configuration
+
+Параметры работы API можно настроить с помощью файла конфигурации `appsettings.json`:
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ScanSettings": {
+    "MaxConcurrentScans": 3,
+    "MinScanTimeMs": 3000,
+    "MaxScanTimeMs": 7000
+  }
+}
+```
+
+### Описание параметров
+
+- `MaxConcurrentScans`: максимальное количество одновременно выполняющихся задач сканирования
+- `MinScanTimeMs` - минимальная длительность симуляции процесса сканирования (в миллисекундах)
+- `MaxScanTimeMs` - максимальная длительность симуляции процесса сканирования (в миллисекундах)
 
 ## 🌐 Interactive documentation (Swagger UI)
 
@@ -76,6 +110,7 @@ KasperskyIntershipTask/
 │   ├── Models/                          # Модели данных
 │   ├── Repositories/                    # Интерфейсы и реализации хранилищ данных
 │   ├── Services/                        # Бизнес-логика
+│   ├── appsettings.json                 # Файл конфигурации
 │   ├── Program.cs                       # Конфигурация пайплайна
 │   └── VulnerabilityTrackerApi.csproj   # Файл проекта API
 │
